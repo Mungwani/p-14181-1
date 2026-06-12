@@ -10,7 +10,9 @@ public record PostDto(
         LocalDateTime modifyDate,
         String title,
         String content,
-        String author
+        String author,
+        int authorId,
+        String authorName
 ) {
     public PostDto(Post post) {
         this(
@@ -19,7 +21,9 @@ public record PostDto(
                 post.getModifyDate(),
                 post.getTitle(),
                 post.getContent(),
-                post.getAuthor().getUsername()
+                post.getAuthor().getUsername(),
+                post.getAuthor().getId(),
+                post.getAuthor().getNickname()
         );
     }
 }
