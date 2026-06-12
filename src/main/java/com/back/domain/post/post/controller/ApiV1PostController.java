@@ -76,7 +76,7 @@ public class ApiV1PostController {
     public RsData<PostDto> write(
             @RequestBody @Valid PostWriteReqBody reqBody
     ) {
-        Post post = postService.write(reqBody.title, reqBody.content);
+        Post post = postService.write(reqBody.title, reqBody.content, "user1");
 
         return new RsData<>(
                 "201-1",

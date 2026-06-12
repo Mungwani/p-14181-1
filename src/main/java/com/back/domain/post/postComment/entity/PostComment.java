@@ -15,10 +15,12 @@ import static jakarta.persistence.FetchType.LAZY;
 public class PostComment extends BaseEntity {
     @ManyToOne(fetch = LAZY)
     private Post post;
+    private String author;
     private String content;
 
-    public PostComment(Post post, String content) {
+    public PostComment(Post post, String author, String content) {
         this.post = post;
+        this.author = author;
         this.content = content;
     }
 

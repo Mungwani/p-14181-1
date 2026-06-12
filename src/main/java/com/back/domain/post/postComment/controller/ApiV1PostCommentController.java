@@ -112,7 +112,7 @@ public class ApiV1PostCommentController {
     ) {
         Post post = postService.findById(postId).get();
 
-        PostComment postComment = postService.writeComment(post, reqBody.content);
+        PostComment postComment = postService.writeComment(post, "user1", reqBody.content);
 
         postService.flush();
 

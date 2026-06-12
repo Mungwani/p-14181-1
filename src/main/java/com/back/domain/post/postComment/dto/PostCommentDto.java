@@ -8,6 +8,7 @@ public record PostCommentDto(
         int id,
         LocalDateTime createDate,
         LocalDateTime modifyDate,
+        String author,
         String content
 ) {
     public PostCommentDto(PostComment postComment) {
@@ -15,6 +16,7 @@ public record PostCommentDto(
                 postComment.getId(),
                 postComment.getCreateDate(),
                 postComment.getModifyDate(),
+                postComment.getAuthor(),
                 postComment.getContent()
         );
     }

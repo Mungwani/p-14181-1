@@ -44,15 +44,15 @@ public class BaseInitData {
     public void work2() {
         if (postService.count() > 0) return;
 
-        Post post1 = postService.write("제목 1", "내용 1");
-        Post post2 = postService.write("제목 2", "내용 2");
-        Post post3 = postService.write("제목 3", "내용 3");
+        Post post1 = postService.write("제목 1", "내용 1", "user1");
+        Post post2 = postService.write("제목 2", "내용 2", "user2");
+        Post post3 = postService.write("제목 3", "내용 3", "user1");
 
-        post1.addComment("댓글 1-1");
-        post1.addComment("댓글 1-2");
-        post1.addComment("댓글 1-3");
-        post2.addComment("댓글 2-1");
-        post2.addComment("댓글 2-2");
+        post1.addComment("user2", "댓글 1-1");
+        post1.addComment("user3", "댓글 1-2");
+        post1.addComment("user1", "댓글 1-3");
+        post2.addComment("user1", "댓글 2-1");
+        post2.addComment("user3", "댓글 2-2");
     }
 
     @Transactional
