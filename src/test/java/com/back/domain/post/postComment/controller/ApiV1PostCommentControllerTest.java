@@ -53,7 +53,11 @@ public class ApiV1PostCommentControllerTest {
                 .andExpect(jsonPath("$.id").value(postComment.getId()))
                 .andExpect(jsonPath("$.createDate").value(Matchers.startsWith(postComment.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.modifyDate").value(Matchers.startsWith(postComment.getModifyDate().toString().substring(0, 20))))
-                .andExpect(jsonPath("$.content").value(postComment.getContent()));
+                .andExpect(jsonPath("$.content").value(postComment.getContent()))
+                .andExpect(jsonPath("$.author").value(postComment.getAuthor().getUsername()))
+                .andExpect(jsonPath("$.authorId").value(postComment.getAuthor().getId()))
+                .andExpect(jsonPath("$.authorName").value(postComment.getAuthor().getNickname()))
+                .andExpect(jsonPath("$.postId").value(postComment.getPost().getId()));
     }
 
     @Test
@@ -83,7 +87,11 @@ public class ApiV1PostCommentControllerTest {
                     .andExpect(jsonPath("$[%d].id".formatted(i)).value(postComment.getId()))
                     .andExpect(jsonPath("$[%d].createDate".formatted(i)).value(Matchers.startsWith(postComment.getCreateDate().toString().substring(0, 20))))
                     .andExpect(jsonPath("$[%d].modifyDate".formatted(i)).value(Matchers.startsWith(postComment.getModifyDate().toString().substring(0, 20))))
-                    .andExpect(jsonPath("$[%d].content".formatted(i)).value(postComment.getContent()));
+                    .andExpect(jsonPath("$[%d].content".formatted(i)).value(postComment.getContent()))
+                    .andExpect(jsonPath("$[%d].author".formatted(i)).value(postComment.getAuthor().getUsername()))
+                    .andExpect(jsonPath("$[%d].authorId".formatted(i)).value(postComment.getAuthor().getId()))
+                    .andExpect(jsonPath("$[%d].authorName".formatted(i)).value(postComment.getAuthor().getNickname()))
+                    .andExpect(jsonPath("$[%d].postId".formatted(i)).value(postComment.getPost().getId()));
         }
     }
 
@@ -162,6 +170,10 @@ public class ApiV1PostCommentControllerTest {
                 .andExpect(jsonPath("$.data.id").value(postComment.getId()))
                 .andExpect(jsonPath("$.data.createDate").value(Matchers.startsWith(postComment.getCreateDate().toString().substring(0, 20))))
                 .andExpect(jsonPath("$.data.modifyDate").value(Matchers.startsWith(postComment.getModifyDate().toString().substring(0, 20))))
-                .andExpect(jsonPath("$.data.content").value("내용"));
+                .andExpect(jsonPath("$.data.content").value("내용"))
+                .andExpect(jsonPath("$.data.author").value(postComment.getAuthor().getUsername()))
+                .andExpect(jsonPath("$.data.authorId").value(postComment.getAuthor().getId()))
+                .andExpect(jsonPath("$.data.authorName").value(postComment.getAuthor().getNickname()))
+                .andExpect(jsonPath("$.data.postId").value(postComment.getPost().getId()));
     }
 }
