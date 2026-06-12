@@ -1,26 +1,28 @@
 package com.back.domain.post.postComment.entity;
 
+import com.back.domain.member.member.entity.Member;
 import com.back.domain.post.post.entity.Post;
 import com.back.global.jpa.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.FetchType.LAZY;
-
 @Entity
 @Getter
 @NoArgsConstructor
 public class PostComment extends BaseEntity {
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
+    private Member author;
+    @ManyToOne
+    @JsonIgnore
     private Post post;
-    private String author;
     private String content;
 
-    public PostComment(Post post, String author, String content) {
-        this.post = post;
+    public PostComment(Member author, Post post, String content) {
         this.author = author;
+        this.post = post;
         this.content = content;
     }
 

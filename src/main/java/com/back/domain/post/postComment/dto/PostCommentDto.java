@@ -16,7 +16,7 @@ public record PostCommentDto(
                 postComment.getId(),
                 postComment.getCreateDate(),
                 postComment.getModifyDate(),
-                postComment.getAuthor(),
+                postComment.getAuthor().getUsername(),
                 postComment.getContent()
         );
     }

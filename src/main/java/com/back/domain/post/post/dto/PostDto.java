@@ -19,7 +19,7 @@ public record PostDto(
                 post.getModifyDate(),
                 post.getTitle(),
                 post.getContent(),
-                post.getAuthor()
+                post.getAuthor().getUsername()
         );
     }
 }
